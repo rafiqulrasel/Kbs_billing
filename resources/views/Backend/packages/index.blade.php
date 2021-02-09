@@ -183,7 +183,9 @@
         });
     </script>
 <script>
-    function deleteUser(id) {
+    function deleteUser(package) {
+        var id=package.getAttribute('data-pack');
+
         if (confirm('Delete this Package?')) {
             $.ajax({
                 type: "DELETE",
@@ -194,7 +196,7 @@
                 },
                 success: function(affectedRows) {
                     //if something was deleted, we redirect the user to the users page, and automatically the user that he deleted will disappear
-
+                   
                     if (affectedRows > 0) window.location = "{{route('dashboard.package.index')}}";
                 }
             });
