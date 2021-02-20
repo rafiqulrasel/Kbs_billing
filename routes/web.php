@@ -2,8 +2,13 @@
 
 use App\Http\Controllers\AllPermissions;
 use App\Http\Controllers\AllRoles;
+use App\Http\Controllers\BuildingController;
+use App\Http\Controllers\BuldingFloorRoom;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\FloorController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,10 +37,17 @@ Route::group(['prefix'=>'dashboard/','as'=>'dashboard.'], function(){
     Route::resource('/client', CustomerController::class);
     Route::resource('/roles', AllRoles::class);
     Route::resource('/permissions', AllPermissions::class);
+    Route::resource('/user', UserController::class);
+    Route::resource('/building', BuildingController::class);
+    Route::resource('/floor', FloorController::class);
+    Route::resource('/room', RoomController::class);
   //  Route::get('connect', ['as' => 'connect', 'uses' = > 'AccountController@connect']);
 
-    // all data from table contoller
 
 }) ;
 //Route::get('packages/list', [tableDataController::class, 'getAllPakage'])->name('packages.list');
+// all data from floor By Building
+
+Route::get("/getfloor",[BuldingFloorRoom::class,'getFloorByBuilding']);
+Route::get("/getroom",[BuldingFloorRoom::class,'getRoomByFloor']);
 require __DIR__.'/auth.php';

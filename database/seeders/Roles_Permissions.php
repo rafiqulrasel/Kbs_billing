@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class Roles_Permissions extends Seeder
 {
@@ -31,14 +33,14 @@ class Roles_Permissions extends Seeder
                 ]
             ],
             [
-                'group_name' => 'packages',
+                'group_name' => 'blog',
                 'permissions' => [
                     // Blog Permissions
-                    'packages.create',
-                    'packages.view',
-                    'packages.edit',
-                    'packages.delete',
-                    'packages.approve',
+                    'blog.create',
+                    'blog.view',
+                    'blog.edit',
+                    'blog.delete',
+                    'blog.approve',
                 ]
             ],
             [

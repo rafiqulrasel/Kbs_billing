@@ -4,9 +4,9 @@
     <div class="container w-full md:w-full xl:w-full  mx-auto px-2">
         <!--Title-->
         <h1 class="font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
-           All Packages
+           All User
         </h1>
-        <a href="{{route('dashboard.package.create')}}" class="text-right"><button class="button text-white bg-theme-1 shadow-md mr-2 text-right">Add New Package</button></a>
+        <a href="{{route('dashboard.user.create')}}" class="text-right"><button class="button text-white bg-theme-1 shadow-md mr-2 text-right">Add New User</button></a>
 
         <!--Card-->
         <div id='recipients' class="mt-12 lg:mt-0 rounded shadow bg-white">
@@ -16,8 +16,8 @@
                 <tr>
                     <th data-priority="1">Id</th>
                     <th data-priority="2">Name</th>
-                    <th data-priority="3">Price</th>
-                    <th data-priority="2">Status</th>
+                    <th data-priority="3">E-mail</th>
+                    <th data-priority="2">Role</th>
                     <th class="text-center whitespace-no-wrap" data-priority="4" align="center">Action</th>
 
                 </tr>
@@ -171,11 +171,11 @@
                 processing: true,
                 serverSide: true,
 
-                ajax: "{{ route('dashboard.package.index') }}",
+                ajax: "{{ route('dashboard.user.index') }}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'name', name: 'name'},
-                    {data: 'price', name: 'price'},
+                    {data: 'email', name: 'email'},
                     {data: 'status', name: 'status'},
                     {data: 'action', name: 'action', orderable: false, searchable: true},
                 ]
@@ -187,10 +187,10 @@
     function deleteUser(package) {
         var id=package.getAttribute('data-pack');
 
-        if (confirm('Delete this Package?')) {
+        if (confirm('Delete this User?')) {
             $.ajax({
                 type: "DELETE",
-                url: 'package/' + id, //resource
+                url: 'user/' + id, //resource
                 cache: false,
                 data:{
                     _token:'{{ csrf_token() }}'
@@ -198,7 +198,7 @@
                 success: function(affectedRows) {
                     //if something was deleted, we redirect the user to the users page, and automatically the user that he deleted will disappear
 
-                    if (affectedRows > 0) window.location = "{{route('dashboard.package.index')}}";
+                    if (affectedRows > 0) window.location = "{{route('dashboard.user.index')}}";
                 }
             });
         }

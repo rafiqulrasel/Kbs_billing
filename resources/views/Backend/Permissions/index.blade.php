@@ -4,7 +4,7 @@
     <div class="container w-full md:w-full xl:w-full  mx-auto px-2">
         <!--Title-->
         <h1 class="font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
-           All Packages
+           All Permissions
         </h1>
         <a href="{{route('dashboard.package.create')}}" class="text-right"><button class="button text-white bg-theme-1 shadow-md mr-2 text-right">Add New Package</button></a>
 

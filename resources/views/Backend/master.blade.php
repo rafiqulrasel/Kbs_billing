@@ -12,12 +12,12 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN: Head -->
 <head>
     <meta charset="utf-8">
-    <link href="{{asset('backend/dist/images/logo.svg')}}" rel="shortcut icon">
+    <link href="{{asset('backend/images/logo.png')}}" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Midone admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Midone admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>Dashboard - Midone - Tailwind HTML Admin Template</title>
+    <title>Dashboard - KBS Billing System</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="{{asset('backend/css/app.css')}}" />
 @yield('style')
@@ -29,7 +29,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="mobile-menu md:hidden">
     <div class="mobile-menu-bar">
         <a href="" class="flex mr-auto">
-            <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="{{asset('backend/images/logo.svg')}}">
+            <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="{{asset('backend/images/logo.png')}}">
         </a>
         <a href="javascript:;" id="mobile-menu-toggler"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
     </div>
@@ -107,25 +107,52 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN: Side Menu -->
     <nav class="side-nav">
         <a href="" class="intro-x flex items-center pl-5 pt-4">
-            <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="{{asset('backend/images/logo.svg')}}">
-            <span class="hidden xl:block text-white text-lg ml-3"> Mid<span class="font-medium">one</span> </span>
+            <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="{{asset('backend/images/logo.png')}}">
+            <span class="hidden xl:block text-white text-lg ml-3"> KBS <span class="font-medium">Billing System</span> </span>
         </a>
         <div class="side-nav__devider my-6"></div>
         <ul>
             <li>
-                <a href="{{route('dashboard')}}" class="side-menu side-menu--active">
+                <a href="{{route('dashboard')}}" class="side-menu {{current_route_menu_active(null)}}">
                     <div class="side-menu__icon"> <i data-feather="home"></i> </div>
                     <div class="side-menu__title"> Dashboard </div>
                 </a>
             </li>
             <li>
-                <a href="{{route('dashboard.package.index')}}" class="side-menu ">
+                <a href="{{route('dashboard.package.index')}}" class="side-menu {{current_route_menu_active("package")}} ">
                     <div class="side-menu__icon"> <i data-feather="home"></i> </div>
                     <div class="side-menu__title"> Package </div>
                 </a>
             </li>
             <li>
-                <a href="{{route('dashboard.client.index')}}" class="side-menu ">
+                <a href="javascript:;" class="side-menu {{current_route_menu_active("building")}} {{current_route_menu_active("floor")}} {{current_route_menu_active("room")}}">
+                    <div class="side-menu__icon"> <i data-feather="box"></i> </div>
+                    <div class="side-menu__title"> Location <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
+                </a>
+                <ul class="">
+                    <li>
+                        <a href="{{route('dashboard.building.index')}}" class="side-menu ">
+                            <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="side-menu__title"> Building Management</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.floor.index')}}" class="side-menu ">
+                            <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="side-menu__title"> Floor Management</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.room.index')}}" class="side-menu ">
+                            <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="side-menu__title"> Room Management</div>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li>
+                <a href="{{route('dashboard.client.index')}}" class="side-menu {{current_route_menu_active("client")}}">
                     <div class="side-menu__icon"> <i data-feather="home"></i> </div>
                     <div class="side-menu__title"> Client Management </div>
                 </a>
@@ -143,29 +170,24 @@ License: You must have a valid license purchased only from themeforest(the above
                 </a>
             </li>
             <li>
-                <a href="javascript:;" class="side-menu">
+                <a href="javascript:;" class="side-menu {{current_route_menu_active("user")}} {{current_route_menu_active("roles")}}">
                     <div class="side-menu__icon"> <i data-feather="box"></i> </div>
                     <div class="side-menu__title"> User Management <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                 </a>
                 <ul class="">
                     <li>
-                        <a href="{{route('dashboard.roles.index')}}" class="side-menu">
+                        <a href="{{route('dashboard.user.index')}}" class="side-menu ">
+                            <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="side-menu__title"> User </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.roles.index')}}" class="side-menu ">
                             <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                             <div class="side-menu__title"> Role Management</div>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{route('dashboard.permissions.index')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                            <div class="side-menu__title"> Permission Management</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="top-menu-light-dashboard.html" class="side-menu">
-                            <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                            <div class="side-menu__title"> Top Menu </div>
-                        </a>
-                    </li>
+
                 </ul>
             </li>
 

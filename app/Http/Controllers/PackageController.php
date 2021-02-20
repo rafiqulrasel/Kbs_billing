@@ -71,7 +71,7 @@ class PackageController extends Controller
         $package=new packages();
         $package->name=$request->package;
         $package->price=$request->price;
-        $package->Status=$request->package=='on'?1:0;
+        $package->Status=$request->status=='on'?1:0;
         $package->save();
         return redirect()->back()->with('success', 'Package Created successfully');
     }
@@ -84,7 +84,7 @@ class PackageController extends Controller
      */
     public function show(packages $packages)
     {
-       echo "Show";
+      // echo "Show";
     }
 
     /**
@@ -106,9 +106,16 @@ class PackageController extends Controller
      * @param  \App\Models\packages  $packages
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, packages $packages)
+    public function update(Request $request, $id)
     {
-        //
+
+        $package=Packages::find($id);
+        $package->name=$request->package;
+        $package->price=$request->price;
+
+        $package->Status=$request->status=='on'?1:0;
+        $package->save();
+        return redirect()->route('dashboard.package.index')->with('success', 'Package Created Updated');
     }
 
     /**
