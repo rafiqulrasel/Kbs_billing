@@ -187,7 +187,7 @@
         if (confirm('Delete this Room?')) {
             $.ajax({
                 type: "DELETE",
-                url: 'user/' + id, //resource
+                url: 'room/' + id, //resource
                 cache: false,
                 data:{
                     _token:'{{ csrf_token() }}'

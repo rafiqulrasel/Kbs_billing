@@ -32,7 +32,7 @@ Route::get('/dashboard', function () {
 
 // dash Board controll
 
-Route::group(['prefix'=>'dashboard/','as'=>'dashboard.'], function(){
+Route::group(['prefix'=>'dashboard/','as'=>'dashboard.'/*,'middleware' => 'auth'*/], function(){
     Route::resource('/package', PackageController::class);
     Route::resource('/client', CustomerController::class);
     Route::resource('/roles', AllRoles::class);
@@ -44,7 +44,7 @@ Route::group(['prefix'=>'dashboard/','as'=>'dashboard.'], function(){
   //  Route::get('connect', ['as' => 'connect', 'uses' = > 'AccountController@connect']);
 
 
-}) ;
+});
 //Route::get('packages/list', [tableDataController::class, 'getAllPakage'])->name('packages.list');
 // all data from floor By Building
 
