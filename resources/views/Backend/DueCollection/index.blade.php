@@ -4,15 +4,10 @@
     <div class="container w-full md:w-full xl:w-full  mx-auto px-2">
         <!--Title-->
         <h1 class="font-sans font-bold break-normal text-indigo-500 px-2 py-8 text-xl md:text-2xl">
-           All Clients
+           All Due Of Clients
         </h1>
-        <div class="intro-y flex flex-col sm:flex-row items-center mt-2">
-        <h2 class="text-lg font-medium mr-auto">
+       <!-- <a href="{{route('dashboard.client.create')}}" class="text-right"><button class="button text-white bg-theme-1 shadow-md mr-2 text-right">Add New Client</button></a> -->
 
-        </h2>
-        <a href="{{route('dashboard.client.create')}}" class="text-right"><button class="button text-white bg-theme-1 shadow-md mr-2 text-right">Add New Client</button></a>
-        </div>
-        <br>
         <!--Card-->
         <div id='recipients' class="mt-12 lg:mt-0 rounded shadow bg-white">
             <table id="example">
@@ -155,6 +150,27 @@
         .dataTables_length {
             padding-top: 1.25rem;
         }
+
+        /* style for svg  */
+        /* -----
+SVG Icons - svgicons.sparkk.fr
+----- */
+
+        .svg-icon {
+            width: 2.5em;
+            height: 2.5em;
+        }
+
+        .svg-icon path,
+        .svg-icon polygon,
+        .svg-icon rect {
+            fill: #4691f6;
+        }
+
+        .svg-icon circle {
+            stroke: #4691f6;
+            stroke-width: 1;
+        }
     </style>
 
 
@@ -178,7 +194,7 @@
                 processing: true,
                 serverSide: true,
 
-                ajax: "{{ route('dashboard.client.index') }}",
+                ajax: "{{ route('dashboard.duecollection.index') }}",
                 columns: [
                    // {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'id', name: 'id'},
@@ -201,7 +217,7 @@
         if (confirm('Delete this Customer Information?')) {
             $.ajax({
                 type: "DELETE",
-                url: 'client/' + id, //resource
+                url: 'duecollection/' + id, //resource
                 cache: false,
                 data:{
                     _token:'{{ csrf_token() }}'
@@ -209,7 +225,7 @@
                 success: function(affectedRows) {
                     //if something was deleted, we redirect the user to the users page, and automatically the user that he deleted will disappear
 
-                    if (affectedRows > 0) window.location = "{{route('dashboard.client.index')}}";
+                    if (affectedRows > 0) window.location = "{{route('dashboard.duecollection.index')}}";
                 }
             });
         }

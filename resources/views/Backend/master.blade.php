@@ -158,7 +158,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </a>
             </li>
             <li>
-                <a href="index.html" class="side-menu ">
+                <a href="{{route('dashboard.duecollection.index')}}" class="side-menu {{current_route_menu_active("duecollection")}}">
                     <div class="side-menu__icon"> <i data-feather="home"></i> </div>
                     <div class="side-menu__title"> Due Collection </div>
                 </a>
@@ -412,8 +412,16 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
 <!-- BEGIN: JS Assets-->
 <script src="{{asset('backend/js/app.js')}}"></script>
+<script src="{{asset('backend/js/jquery.min.js')}}"></script>
 <!-- END: JS Assets-->
 @yield('script')
+<script>
+    $(document).ready(function (){
+        $(".feather-x").click(function () {
+            $('.myalertmessage').hide();
+        });
+    });
+</script>
 </body>
 </html>
 

@@ -14,6 +14,11 @@
         </div>
         <br>
         <div>
+            <label>Mobile:</label>
+            <input type="text" value="{{$user->mobile}}" name="mobile" class="input w-full border mt-2" placeholder="update user email">
+        </div>
+        <br>
+        <div>
             <label>E-mail:</label>
             <input type="text" value="{{$user->email}}" name="email" class="input w-full border mt-2" placeholder="update user email">
         </div>

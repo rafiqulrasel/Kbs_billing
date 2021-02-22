@@ -14,6 +14,11 @@
         <br>
 
         <div>
+            <label>Mobile:</label>
+            <input type="email" name="mobile"  class="input w-full border mt-2" placeholder="Input Mobile">
+        </div>
+        <br>
+        <div>
             <label>E-mail:</label>
             <input type="email" name="email"  class="input w-full border mt-2" placeholder="Input E-mail ">
         </div>

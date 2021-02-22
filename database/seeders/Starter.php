@@ -20,6 +20,7 @@ class Starter extends Seeder
             if (is_null($user)) {
                 $user = new User();
                 $user->name = "Rasel";
+                $user->mobile = "01715483048";
                 $user->email = "rafiqulcseduet@gmail.com";
                 $user->password = Hash::make('12345678');
                 $user->save();

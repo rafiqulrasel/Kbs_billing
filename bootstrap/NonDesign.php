@@ -7,6 +7,10 @@ function all_user(){
     $all_package=\App\Models\User::count();
     return $all_package;
 }
+function all_Client(){
+    $all_client=\App\Models\Customer::count();
+    return $all_client;
+}
 
 function current_route_menu_active($param){
     $myarr= preg_split("/\//", Route::getFacadeRoot()->current()->uri());

@@ -18,10 +18,14 @@ class CreateCustomersTable extends Migration
             $table->string("building_id");
             $table->string("floor_id");
             $table->string("room_id");
-            $table->string("Name");
-            $table->string("Mobile")->nullable();
+            $table->string("name")->nullable();
+            $table->string("mobile")->nullable();
             $table->string("email")->nullable();
             $table->integer("package_id");
+            $table->date("start_date");
+            $table->date("next_recurring");
+            $table->string("price");
+            $table->boolean("active_status");
             $table->timestamps();
         });
     }

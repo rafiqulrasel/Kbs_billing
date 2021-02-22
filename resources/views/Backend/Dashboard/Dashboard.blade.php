@@ -34,7 +34,7 @@
                                         <div class="report-box__indicator bg-theme-6 tooltip cursor-pointer" title="2% Lower than last month"> 2% <i data-feather="chevron-down" class="w-4 h-4"></i> </div>
                                     </div>
                                 </div>
-                                <div class="text-3xl font-bold leading-8 mt-6">3.521</div>
+                                <div class="text-3xl font-bold leading-8 mt-6">{{all_Client()}}</div>
                                 <div class="text-base text-gray-600 mt-1">Total Client</div>
                             </div>
                         </div>

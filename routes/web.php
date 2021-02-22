@@ -4,7 +4,9 @@ use App\Http\Controllers\AllPermissions;
 use App\Http\Controllers\AllRoles;
 use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\BuldingFloorRoom;
+use App\Http\Controllers\clientPackage;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DueCollection;
 use App\Http\Controllers\FloorController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\RoomController;
@@ -41,6 +43,7 @@ Route::group(['prefix'=>'dashboard/','as'=>'dashboard.'/*,'middleware' => 'auth'
     Route::resource('/building', BuildingController::class);
     Route::resource('/floor', FloorController::class);
     Route::resource('/room', RoomController::class);
+    Route::resource('/duecollection', DueCollection::class);
   //  Route::get('connect', ['as' => 'connect', 'uses' = > 'AccountController@connect']);
 
 
@@ -50,4 +53,5 @@ Route::group(['prefix'=>'dashboard/','as'=>'dashboard.'/*,'middleware' => 'auth'
 
 Route::get("/getfloor",[BuldingFloorRoom::class,'getFloorByBuilding']);
 Route::get("/getroom",[BuldingFloorRoom::class,'getRoomByFloor']);
+Route::get("/getpackage",[clientPackage::class,'getpackage']);
 require __DIR__.'/auth.php';

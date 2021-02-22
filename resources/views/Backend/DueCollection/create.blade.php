@@ -33,7 +33,7 @@
         <div class="mt-3">
             <label>Package :</label>
             <div class="mt-2">
-                <select data-placeholder="Select Package" name="package" id="package" class="tail-select w-full" >
+                <select data-placeholder="Select Package" name="package" class="tail-select w-full" >
                     @foreach($packages as $package)
                     <option value="{{$package->id}}" >{{$package->name}}</option>
                     @endforeach
@@ -72,7 +72,7 @@
         <br>
         <div id="special_price">
             <label>Special Price :</label>
-            <input type="text" name="Special_price" value="{{$packages[0]->price}}" id="special_price" class="input w-full border mt-2" placeholder="Input after Discount Price">
+            <input type="text" name="Special_price" id="special_price" class="input w-full border mt-2" placeholder="Input after Discount Price">
         </div>
         <br>
         <div class="mt-3">
@@ -151,26 +151,6 @@ margin-top: -25px !important;
                 });
             }
 
-        });
-        // for package change
-        var mypackage=$('select[name="package"]');
-        mypackage.change(function (){
-            var package_id=$(this).val();
-
-            $.get('{{url('/getpackage?package_id=')}}'+package_id,function (package) {
-
-
-                package.forEach(function (row) {
-                    // console.log(row.price);
-
-                    $('input[name="Special_price"]').val(row.price);
-                 });
-
-            });
-
-        });
-        $(".feather-x").click(function () {
-           $('.myalertmessage').hide();
         });
     });
 
