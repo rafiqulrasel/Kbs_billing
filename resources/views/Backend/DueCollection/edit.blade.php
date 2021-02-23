@@ -8,7 +8,7 @@
 
             </h2>
             <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-                <button class="button text-white bg-theme-1 shadow-md mr-2" id="btn-invoice" >Print</button>
+                <button class="button text-white bg-theme-1 shadow-md mr-2" onclick="PrintElem('#customer-invoice')" id="btn-invoice" >Print</button>
                 <div class="dropdown ml-auto sm:ml-0">
                     <button class="dropdown-toggle button px-2 box text-gray-700 dark:text-gray-300">
                         <span class="w-5 h-5 flex items-center justify-center"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus w-4 h-4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg> </span>
@@ -24,8 +24,8 @@
         </div>
         <!-- BEGIN: Invoice -->
         <div id="customer-invoice">
-        <div class="intro-y box overflow-hidden mt-5">
-            <div class="flex flex-col lg:flex-row pt-10 px-5 sm:px-20 sm:pt-20 lg:pb-20 text-center sm:text-left">
+        <div class="intro-y box overflow-hidden">
+            <div class="flex flex-col lg:flex-row   sm:px-2 sm:pt-2 lg:pb-2 text-center sm:text-left">
                 <div class="font-semibold text-theme-1 dark:text-theme-10 text-3xl">INVOICE</div>
                 <div class="mt-20 lg:mt-0 lg:ml-auto lg:text-right">
                     <div class="text-xl text-theme-1 dark:text-theme-10 font-medium">Left4code</div>
@@ -33,27 +33,34 @@
                     <div class="mt-1">8023 Amerige Street Harriman, NY 10926.</div>
                 </div>
             </div>
-            <div class="flex flex-col lg:flex-row border-b px-5 sm:px-20 pt-3 pb-3 sm:pb-3 text-center sm:text-left">
+            <div class="flex flex-col lg:flex-row border-b px-2 sm:px-20 pt-1 pb-1 sm:pb-1 text-center sm:text-left">
                 <div>
-                    <div class="text-base text-gray-600">Client Details</div>
+                    <div class="text-base text-gray-600 ">Client Details</div>
                     <div class="text-lg font-medium text-theme-1 dark:text-theme-10 mt-2">{{$client->name}}</div>
-                    <div class="mt-1">{{$client->mobile}}</div>
+                    <div class="ml-1">{{$client->mobile}}</div>
                     <div class="mt-1">{{$client->email}}</div>
                     <div class="mt-1">{{$building->name}},{{$floor->name}},{{$room->name}}</div>
                 </div>
+                <div class="ml-10">
+                    <div class="mt-1">&nbsp;&nbsp;&nbsp;</div>
+                    <div class="mt-1">&nbsp;&nbsp;&nbsp;</div>
+                </div>
+                <div class="ml-10">
+                   <img id="logo" width="180" height="180" src="{{asset('backend/images/logo.png')}}" />
+                </div>
                 <div class="mt-10 lg:mt-0 lg:ml-auto lg:text-right">
                     <div class="text-base text-gray-600">Receipt</div>
-                    <div class="text-lg text-theme-1 dark:text-theme-10 font-medium mt-2">#1923195</div>
+                    <div class="text-lg text-theme-1 dark:text-theme-10 font-medium mt-2">#{{$lastBillInfo->id}}</div>
                     <div class="mt-1">{{\Carbon\Carbon::now()->format('d M Y')}}</div>
                 </div>
             </div>
-            <div class="px-5 sm:px-16 py-10 sm:py-20">
+            <div class="px-1 sm:px-5 py-2 sm:py-2">
                 <div class="overflow-x-auto">
                     <table class="table">
                         <thead>
                         <tr>
-                            <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">DESCRIPTION</th>
-                            <th class="border-b-2 dark:border-dark-5 text-right whitespace-no-wrap">QTY</th>
+                            <th class="border-b-2 dark:border-dark-5 whitespace-no-wrap">PACKAGE NAME</th>
+                            <th class="border-b-2 dark:border-dark-5 text-right whitespace-no-wrap">Month</th>
                             <th class="border-b-2 dark:border-dark-5 text-right whitespace-no-wrap">PRICE</th>
                             <th class="border-b-2 dark:border-dark-5 text-right whitespace-no-wrap">SUBTOTAL</th>
                         </tr>
@@ -61,55 +68,28 @@
                         <tbody>
                         <tr>
                             <td class="border-b dark:border-dark-5">
-                                <div class="font-medium whitespace-no-wrap">Midone HTML Admin Template</div>
-                                <div class="text-gray-600 text-xs whitespace-no-wrap">Regular License</div>
+                                <div class="font-medium whitespace-no-wrap">{{$packagename->name}}</div>
+                                <div class="text-gray-600 text-xs whitespace-no-wrap">{{$packagename->name==$client->price?"Regular Price":"Special Price"}}</div>
                             </td>
-                            <td class="text-right border-b dark:border-dark-5 w-32">2</td>
-                            <td class="text-right border-b dark:border-dark-5 w-32">$25</td>
-                            <td class="text-right border-b dark:border-dark-5 w-32 font-medium">$50</td>
+                            <td class="text-right border-b dark:border-dark-5 w-32">{{$totalMonth}}</td>
+                            <td class="text-right border-b dark:border-dark-5 w-32">{{$client->price}} tk</td>
+                            <td class="text-right border-b dark:border-dark-5 w-32 font-medium">{{$lastBillInfo->total_amount}} tk</td>
                         </tr>
-                        <tr>
-                            <td class="border-b dark:border-dark-5">
-                                <div class="font-medium whitespace-no-wrap">Vuejs Admin Template</div>
-                                <div class="text-gray-600 text-xs whitespace-no-wrap">Regular License</div>
-                            </td>
-                            <td class="text-right border-b dark:border-dark-5 w-32">1</td>
-                            <td class="text-right border-b dark:border-dark-5 w-32">$25</td>
-                            <td class="text-right border-b dark:border-dark-5 w-32 font-medium">$25</td>
-                        </tr>
-                        <tr>
-                            <td class="border-b dark:border-dark-5">
-                                <div class="font-medium whitespace-no-wrap">React Admin Template</div>
-                                <div class="text-gray-600 text-xs whitespace-no-wrap">Regular License</div>
-                            </td>
-                            <td class="text-right border-b dark:border-dark-5 w-32">1</td>
-                            <td class="text-right border-b dark:border-dark-5 w-32">$25</td>
-                            <td class="text-right border-b dark:border-dark-5 w-32 font-medium">$25</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="font-medium whitespace-no-wrap">Laravel Admin Template</div>
-                                <div class="text-gray-600 text-xs whitespace-no-wrap">Regular License</div>
-                            </td>
-                            <td class="text-right w-32">3</td>
-                            <td class="text-right w-32">$25</td>
-                            <td class="text-right w-32 font-medium">$75</td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="px-5 sm:px-20 pb-10 sm:pb-20 flex flex-col-reverse sm:flex-row">
+            <div class=" sm:px-5 pb-5 sm:pb-10 flex flex-col-reverse sm:flex-row">
                 <div class="text-center sm:text-left mt-10 sm:mt-0">
                     <div class="text-base text-gray-600">Bill Issue By</div>
                     <div class="text-lg text-theme-1 dark:text-theme-10 font-medium mt-2">{{Auth::user()->name}}</div>
+                    <div class="mt-1">{{Auth::user()->mobile}}</div>
                     <div class="mt-1">{{Auth::user()->email}}</div>
-                    <div class="mt-1">Code : LFT133243</div>
                 </div>
                 <div class="text-center sm:text-right sm:ml-auto">
                     <div class="text-base text-gray-600">Total Amount</div>
-                    <div class="text-xl text-theme-1 dark:text-theme-10 font-medium mt-2">$20.600.00</div>
-                    <div class="mt-1 tetx-xs">Taxes included</div>
+                    <div class="text-xl text-theme-1 dark:text-theme-10 font-medium mt-2">{{$lastBillInfo->total_amount}} tk</div>
                 </div>
             </div>
         </div>
@@ -118,24 +98,47 @@
     </div>
 @endsection
 @section('style')
-
+<style>
+#logo{
+    margin-left: 260px !important;
+}
+@media print {
+    #logo{
+        margin-left: 560px !important;
+    }
+}
+</style>
 @endsection
 @section('script')
 <script>
+    /*
         $("#btn-invoice").click(function () {
-           
+
             var divToPrint=document.getElementById('customer-invoice');
+            var myStyle = '<link rel="stylesheet" href="{{asset('backend/css/print.css')}}" />';
+            console.log(myStyle);
 
-            var newWin=window.open('','Print-Window');
-
-            newWin.document.open();
-
-            newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
-
-            newWin.document.close();
-
-            setTimeout(function(){newWin.close();},10);
+            w=window.open(null, 'Print_Page', 'scrollbars=yes');
+            w.document.write(myStyle + jQuery(divToPrint).html());
+            w.document.close();
+            w.print();
         });
+*/
+        function PrintElem(elem) {
+            Popup(jQuery(elem).html());
+        }
+
+        function Popup(data) {
+            var mywindow = window.open('', 'my div', 'height=800,width=1000');
+            mywindow.document.write('<html><head><title></title>');
+            mywindow.document.write('<link rel="stylesheet" href="{{asset('backend/css/app.css')}}" type="text/css" />');
+           // mywindow.document.write('<style type="text/css">#customer-invoice{background-image: url("{{asset('backend/css/app.css')}}") !important } </style></head><body>');
+            mywindow.document.write(data);
+            mywindow.document.write('</body></html>');
+            mywindow.document.close();
+            mywindow.print();
+        }
+
 
 </script>
 @endsection

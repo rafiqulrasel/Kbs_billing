@@ -17,7 +17,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="description" content="Midone admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Midone admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>KBS Billing System</title>
+    <title>{{Settings::get('logintitlename', 'KBS Billing System')}}</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="{{asset('backend/css/app.css')}}" />
     <style type="text/css">
@@ -37,16 +37,14 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="hidden xl:flex flex-col min-h-screen">
             <a href="{{route("login")}}" class="-intro-x flex items-center pt-5">
                 <img alt="Midone Tailwind HTML Admin Template" id="kbs_logo"   src="{{asset('backend/images/logo-.png')}}">
-                <span class="text-white text-lg ml-3"> KBS <span class="font-medium">Billing System</span> </span>
+                <span class="text-white text-lg ml-3"> {{Settings::get('loginsitename', 'KBS')}} <span class="font-medium">Billing System</span> </span>
             </a>
             <div class="my-auto">
                 <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{asset('backend/images/illustration.svg')}}">
                 <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                    KBS Is the largest ISP
-
-                    in Your City
+                    {{Settings::get('loginslogan', 'KBS Is the largest ISP in Your City')}}
                 </div>
-                <div class="-intro-x mt-5 text-lg text-white dark:text-gray-500">Client Management System for KBS</div>
+                <div class="-intro-x mt-5 text-lg text-white dark:text-gray-500">{{Settings::get('loginsubslogan', 'Client Management System for KBS')}}</div>
             </div>
         </div>
         <!-- END: Login Info -->

@@ -1,15 +1,18 @@
 <?php
 
+use App\Http\Controllers\Accounts;
 use App\Http\Controllers\AllPermissions;
 use App\Http\Controllers\AllRoles;
 use App\Http\Controllers\BuildingController;
 use App\Http\Controllers\BuldingFloorRoom;
 use App\Http\Controllers\clientPackage;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\customerInvoice;
 use App\Http\Controllers\DueCollection;
 use App\Http\Controllers\FloorController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\Settings;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +47,8 @@ Route::group(['prefix'=>'dashboard/','as'=>'dashboard.'/*,'middleware' => 'auth'
     Route::resource('/floor', FloorController::class);
     Route::resource('/room', RoomController::class);
     Route::resource('/duecollection', DueCollection::class);
+    Route::resource('/settings', Settings::class);
+    Route::resource('/accounts', Accounts::class);
   //  Route::get('connect', ['as' => 'connect', 'uses' = > 'AccountController@connect']);
 
 
@@ -54,4 +59,5 @@ Route::group(['prefix'=>'dashboard/','as'=>'dashboard.'/*,'middleware' => 'auth'
 Route::get("/getfloor",[BuldingFloorRoom::class,'getFloorByBuilding']);
 Route::get("/getroom",[BuldingFloorRoom::class,'getRoomByFloor']);
 Route::get("/getpackage",[clientPackage::class,'getpackage']);
+Route::get("/printinvoice",[customerInvoice::class,'printInvoice'])->name("cinvoice");
 require __DIR__.'/auth.php';

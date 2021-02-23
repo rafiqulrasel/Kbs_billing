@@ -164,10 +164,43 @@ License: You must have a valid license purchased only from themeforest(the above
                 </a>
             </li>
             <li>
-                <a href="index.html" class="side-menu ">
-                    <div class="side-menu__icon"> <i data-feather="home"></i> </div>
-                    <div class="side-menu__title"> Report </div>
+                <a href="javascript:;" class="side-menu {{current_route_menu_active("user")}} {{current_route_menu_active("roles")}}">
+                    <div class="side-menu__icon"> <i data-feather="box"></i> </div>
+                    <div class="side-menu__title"> Report <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
+
                 </a>
+                <ul class="">
+
+                    <li>
+                        <a href="{{route('dashboard.roles.index')}}" class="side-menu ">
+                            <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="side-menu__title"> All Connection </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.roles.index')}}" class="side-menu ">
+                            <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="side-menu__title"> Monthly Due</div>
+                        </a>
+                    </li>
+
+                        <li>
+                            <a href="{{route('dashboard.user.index')}}" class="side-menu ">
+                                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="side-menu__title"> User Collections </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('dashboard.roles.index')}}" class="side-menu ">
+                                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                                <div class="side-menu__title"> All Collection</div>
+                            </a>
+                        </li>
+
+
+
+                </ul>
+
             </li>
             <li>
                 <a href="javascript:;" class="side-menu {{current_route_menu_active("user")}} {{current_route_menu_active("roles")}}">
@@ -190,9 +223,37 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 </ul>
             </li>
+            <li>
+                <a href="javascript:;" class="side-menu {{current_route_menu_active("user")}} {{current_route_menu_active("roles")}}">
+                    <div class="side-menu__icon"> <i data-feather="box"></i> </div>
+                    <div class="side-menu__title">Accounts <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
+                </a>
+                <ul class="">
+                    <li>
+                        <a href="{{route('dashboard.accounts.index')}}" class="side-menu ">
+                            <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="side-menu__title"> Collections & Expences </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('dashboard.roles.index')}}" class="side-menu ">
+                            <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="side-menu__title"> Report</div>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li>
+                <a href="{{route('dashboard.settings.index')}}" class="side-menu {{current_route_menu_active("settings")}}">
+                    <div class="side-menu__icon"> <i data-feather="home"></i> </div>
+                    <div class="side-menu__title"> Settings </div>
+                </a>
+            </li>
 
         </ul>
         </li>
+
         </ul>
     </nav>
     <!-- END: Side Menu -->

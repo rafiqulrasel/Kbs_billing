@@ -119,11 +119,11 @@ class CustomerController extends Controller
         $customer->room_id=$request->room;
         $customer->package_id=$request->package;
         $customer->start_date=$request->start_date;
-        $customer->next_recurring=$recurring_date;
+        $customer->next_recurring=$request->start_date;
         $customer->price=$request->discount_status==null?$package_price->price:$request->Special_price;
         $customer->active_status=$request->active_status=='null'?0:1;
         $customer->save();
-        return redirect()->route("dashboard.client.index")->with('success', 'New Customer Created successfully');
+        return redirect()->route("dashboard.duecollection.index")->with('success', 'New Customer Created successfully');
     }
 
     /**
@@ -176,8 +176,8 @@ class CustomerController extends Controller
         $customer->floor_id=$request->floor;
         $customer->room_id=$request->room;
         $customer->package_id=$request->package;
-        $customer->start_date=$request->start_date;
-        $customer->next_recurring=$recurring_date;
+        //$customer->start_date=$request->start_date;
+        $customer->next_recurring=$request->start_date;
         $customer->price=$request->discount_status=="on"?$request->Special_price:$package_price->price;
         $customer->active_status=$request->active_status==null?0:1;
         $customer->save();
