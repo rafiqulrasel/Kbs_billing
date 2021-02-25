@@ -59,3 +59,7 @@ function error_message($errors){
 
 
 }
+
+function btnAddNew($name,$route){
+    echo '<a href="'.route($route).'" class="text-right"><button class="button text-white bg-theme-1 shadow-md mr-2 text-right">'.$name.'</button></a>';
+}

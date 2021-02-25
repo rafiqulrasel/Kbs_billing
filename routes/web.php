@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AccountCollectionsExpenseTypeController;
+use App\Http\Controllers\AccountReport;
 use App\Http\Controllers\Accounts;
 use App\Http\Controllers\AllPermissions;
 use App\Http\Controllers\AllRoles;
@@ -49,6 +51,8 @@ Route::group(['prefix'=>'dashboard/','as'=>'dashboard.'/*,'middleware' => 'auth'
     Route::resource('/duecollection', DueCollection::class);
     Route::resource('/settings', Settings::class);
     Route::resource('/accounts', Accounts::class);
+    Route::resource('/accountstype', AccountCollectionsExpenseTypeController::class);
+    Route::resource('/accountsreport', AccountReport::class);
   //  Route::get('connect', ['as' => 'connect', 'uses' = > 'AccountController@connect']);
 
 

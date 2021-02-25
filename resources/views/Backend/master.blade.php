@@ -224,11 +224,17 @@ License: You must have a valid license purchased only from themeforest(the above
                 </ul>
             </li>
             <li>
-                <a href="javascript:;" class="side-menu {{current_route_menu_active("user")}} {{current_route_menu_active("roles")}}">
+                <a href="javascript:;" class="side-menu {{current_route_menu_active("accountstype")}} {{current_route_menu_active("accounts")}} {{current_route_menu_active("accountsreport")}}">
                     <div class="side-menu__icon"> <i data-feather="box"></i> </div>
                     <div class="side-menu__title">Accounts <i data-feather="chevron-down" class="side-menu__sub-icon"></i> </div>
                 </a>
                 <ul class="">
+                    <li>
+                        <a href="{{route('dashboard.accountstype.index')}}" class="side-menu ">
+                            <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                            <div class="side-menu__title"> Collections & Expences Type </div>
+                        </a>
+                    </li>
                     <li>
                         <a href="{{route('dashboard.accounts.index')}}" class="side-menu ">
                             <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
@@ -236,7 +242,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                     </li>
                     <li>
-                        <a href="{{route('dashboard.roles.index')}}" class="side-menu ">
+                        <a href="{{route('dashboard.accountsreport.index')}}" class="side-menu ">
                             <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                             <div class="side-menu__title"> Report</div>
                         </a>
