@@ -1,0 +1,10 @@
+@media print {
+    .logo{
+        background-image: url("/public/Backend/images/logo.png");
+        background-repeat: no-repeat;
+        z-index: 9999;
+        background-position: center;
+
+    }
+
+}

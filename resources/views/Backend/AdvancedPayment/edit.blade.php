@@ -139,7 +139,8 @@
             var mywindow = window.open('', 'my div', 'height=800,width=1000');
             mywindow.document.write('<html><head><title></title>');
             mywindow.document.write('<link rel="stylesheet" href="{{asset('backend/css/app.css')}}" type="text/css" />');
-           // mywindow.document.write('<style type="text/css">#customer-invoice{background-image: url("{{asset('backend/css/app.css')}}") !important } </style></head><body>');
+            mywindow.document.write('<link rel="stylesheet" href="{{asset('backend/css/invoice.css')}}" type="text/css" />');
+         //   mywindow.document.write('<style type="text/css">}}") !important } </style></head><body>');
             mywindow.document.write(data);
             mywindow.document.write('</body></html>');
             mywindow.document.close();

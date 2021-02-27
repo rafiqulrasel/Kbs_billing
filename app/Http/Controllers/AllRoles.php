@@ -86,7 +86,7 @@ class AllRoles extends Controller
             $role->syncPermissions($permissions);
         }
 
-        return redirect()->route("dashboard.roles.index")->with('success', 'Roles Created successfully');;
+        return redirect()->route("dashboard.roles.index")->with('success', 'Roles Created successfully');
     }
 
     /**

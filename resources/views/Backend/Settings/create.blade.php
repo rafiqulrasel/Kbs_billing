@@ -25,6 +25,22 @@
             <input type="text" name="loginsubslogan" value="{{Settings::get('loginsubslogan', 'Client Management System for KBS')}}" class="input w-full border mt-2" placeholder="Input  Building Name">
         </div>
         <br>
+        <div>
+            <label>Invoice Busness Name:</label>
+            <input type="text" name="invoicebussnessname" value="{{Settings::get('invoicebussnessname', 'KBS')}}" class="input w-full border mt-2" placeholder="Input  Building Name">
+        </div>
+        <br>
+        <div>
+            <label>invoice Business Contact:</label>
+            <input type="text" name="invoicecontact" value="{{Settings::get('invoicecontact', 'kbs@gmail.com')}}" class="input w-full border mt-2" placeholder="Input  Building Name">
+        </div>
+        <br>
+        <div>
+            <label>invoice Business Address:</label>
+            <input type="text" name="invoicebusinessaddress" value="{{Settings::get('invoicebusinessaddress', 'Notunhat')}}" class="input w-full border mt-2" placeholder="Input  Building Name">
+        </div>
+        <br>
+
 
         <div class="text-right mt-5">
             <a href="{{route('dashboard.building.index')}}"><button type="button" class="button w-24 border dark:border-dark-5 text-gray-700 dark:text-gray-300 mr-1">Cancel</button></a>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountCollectionsExpenseTypeController;
 use App\Http\Controllers\AccountReport;
 use App\Http\Controllers\Accounts;
+use App\Http\Controllers\AdvancedPayment;
 use App\Http\Controllers\AllPermissions;
 use App\Http\Controllers\AllRoles;
 use App\Http\Controllers\BuildingController;
@@ -39,7 +40,7 @@ Route::get('/dashboard', function () {
 
 // dash Board controll
 
-Route::group(['prefix'=>'dashboard/','as'=>'dashboard.'/*,'middleware' => 'auth'*/], function(){
+Route::group(['prefix'=>'dashboard/','as'=>'dashboard.','middleware' => 'auth'], function(){
     Route::resource('/package', PackageController::class);
     Route::resource('/client', CustomerController::class);
     Route::resource('/roles', AllRoles::class);
@@ -53,6 +54,7 @@ Route::group(['prefix'=>'dashboard/','as'=>'dashboard.'/*,'middleware' => 'auth'
     Route::resource('/accounts', Accounts::class);
     Route::resource('/accountstype', AccountCollectionsExpenseTypeController::class);
     Route::resource('/accountsreport', AccountReport::class);
+    Route::resource('/advancedpayment', AdvancedPayment::class);
   //  Route::get('connect', ['as' => 'connect', 'uses' = > 'AccountController@connect']);
 
 
